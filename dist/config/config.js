@@ -13,5 +13,5 @@ catch (error) {
     console.error("Error loading environment variables:", error);
     process.exit(1);
 }
-exports.MONGO_URL = `${process.env.DB_URL}`;
-exports.PORT = process.env.PORT || 5002;
+exports.MONGO_URL = `mongodb+srv://admin:ZoBuGBL5CDk88mNs@solprice.1dbxx.mongodb.net/?retryWrites=true&w=majority&appName=solPrice`;
+exports.PORT = 5551;

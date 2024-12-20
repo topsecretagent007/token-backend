@@ -43,16 +43,15 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 const server = http.createServer(app);
 
 // Define routes for different API endpoints
-app.post("/api/getPrice", async (req, res) => {
+app.use("/api/getPrice", async (req, res) => {
   try {
-    if (!req.body) {
-      console.log("newString ==> return")
+    const { content } = req.body;
+
+    if (!content) {
       return res.status(400).json({});
     }
 
-    const newString = new StringModel(req.body);
-    console.log("newString ==> ", newString)
-
+    const newString = new StringModel({ content });
     await newString.save();
 
     return res.status(200).json({});
