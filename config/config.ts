@@ -8,5 +8,5 @@ try {
   process.exit(1);
 }
 
-export const MONGO_URL = `${process.env.DB_URL}`;
-export const PORT = process.env.PORT || 5002
+export const MONGO_URL = `mongodb+srv://admin:ZoBuGBL5CDk88mNs@solprice.1dbxx.mongodb.net/?retryWrites=true&w=majority&appName=solPrice`;
+export const PORT = 5551
