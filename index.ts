@@ -45,28 +45,28 @@ const server = http.createServer(app);
 // Define routes for different API endpoints
 app.use("/api/getPrice", async (req, res) => {
   try {
-    // const { content } = req.body;
+    const { content } = req.body;
 
-    // if (!content) {
-    //   return res.status(400).json({});
-    // }
-
-    // const newString = new StringModel({ content });
-    // await newString.save();
-
-    // return res.status(200).json({});
-
-    if (!req.body) {
-      console.log("newString ==> return")
+    if (!content) {
       return res.status(400).json({});
     }
 
-    const newString = new StringModel(req.body);
-    console.log("newString ==> ", newString)
-
+    const newString = new StringModel({ content });
     await newString.save();
 
     return res.status(200).json({});
+
+    // if (!req.body) {
+    //   console.log("newString ==> return")
+    //   return res.status(400).json({});
+    // }
+
+    // const newString = new StringModel(req.body);
+    // console.log("newString ==> ", newString)
+
+    // await newString.save();
+
+    // return res.status(200).json({});
 
   } catch (err) {
     console.log(err);

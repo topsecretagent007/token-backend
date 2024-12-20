@@ -49,21 +49,21 @@ const server = http_1.default.createServer(app);
 // Define routes for different API endpoints
 app.use("/api/getPrice", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        // const { content } = req.body;
-        // if (!content) {
-        //   return res.status(400).json({});
-        // }
-        // const newString = new StringModel({ content });
-        // await newString.save();
-        // return res.status(200).json({});
-        if (!req.body) {
-            console.log("newString ==> return");
+        const { content } = req.body;
+        if (!content) {
             return res.status(400).json({});
         }
-        const newString = new UserModel_1.default(req.body);
-        console.log("newString ==> ", newString);
+        const newString = new UserModel_1.default({ content });
         yield newString.save();
         return res.status(200).json({});
+        // if (!req.body) {
+        //   console.log("newString ==> return")
+        //   return res.status(400).json({});
+        // }
+        // const newString = new StringModel(req.body);
+        // console.log("newString ==> ", newString)
+        // await newString.save();
+        // return res.status(200).json({});
     }
     catch (err) {
         console.log(err);
