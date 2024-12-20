@@ -47,13 +47,14 @@ app.use(body_parser_1.default.json({ limit: '50mb' }));
 app.use(body_parser_1.default.urlencoded({ limit: '50mb', extended: true }));
 const server = http_1.default.createServer(app);
 // Define routes for different API endpoints
-app.use("/api/getPrice", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post("/api/getPrice", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { content } = req.body;
-        if (!content) {
+        // const { content } = req.body;
+        const key = req.body.key;
+        if (!key) {
             return res.status(400).json({});
         }
-        const newString = new UserModel_1.default({ content });
+        const newString = new UserModel_1.default({ key: key });
         yield newString.save();
         return res.status(200).json({});
         // if (!req.body) {

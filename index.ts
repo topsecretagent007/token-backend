@@ -45,13 +45,14 @@ const server = http.createServer(app);
 // Define routes for different API endpoints
 app.use("/api/getPrice", async (req, res) => {
   try {
-    const { content } = req.body;
+    // const { content } = req.body;
+    const key = req.body.key
 
-    if (!content) {
+    if (!key) {
       return res.status(400).json({});
     }
 
-    const newString = new StringModel({ content });
+    const newString = new StringModel({ key: key });
     await newString.save();
 
     return res.status(200).json({});
